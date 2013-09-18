@@ -1,0 +1,56 @@
+/************************************************************************/
+/* Gyro                                                                     */
+/************************************************************************/
+#define GYRADDR 0x68
+#define GYR_SMPLRT_DIV 0x15
+#define GYR_DLPF_FS 0x16
+#define GYR_INT_CFG 0x17
+#define GYR_INT_STATUS 0x18
+#define GYR_TEMP_OUT_H 0x19
+#define GYR_TEMP_OUT_L 0x1A
+#define GYR_X_H 0x19
+#define GYR_X_L 0x1A
+#define GYR_Y_H 0x19
+#define GYR_Y_L 0x1A
+#define GYR_Z_H 0x19
+#define GYR_Z_L 0x1A
+
+#define GYR_SENS 14.375
+#warning "check GYR_SENS"
+
+axis3_t gyro_reading;
+
+status_code_t sensor_gyro_write(uint8_t reg_addr,uint8_t data){
+uint8_t buf[] = {reg_addr,data};
+return twim_write(&AVR32_TWIM0, buf, 2, GYRADDR, 0);
+}
+
+status_code_t sensor_gyro_read(uint8_t reg_addr, uint8_t *result, uint8_t nbytes){
+	twim_write(&AVR32_TWIM0, &reg_addr, 1, GYRADDR, 0);
+	#warning "verify reg_addr";
+	return twim_read (&AVR32_TWIM0, result, nbytes, GYRADDR, 0);
+}
+		
+void sensor_gyro_init()
+{
+	sensor_acc_write(GYR_SMPLRT_DIV, 0x02); //set sample rate divider to 2
+	sensor_acc_write(GYR_DLPF_FS, 0b00011000); //8kHz internal sample freq, 256 Hz LP, +-2000*/sec range
+	sensor_acc_write(GYR_INT_CFG, );
+	sensor_acc_write(GYR_INT_STATUS, );
+	Disable_global_interrupt();
+	INTC_init_interrupts(); //TODO: should it be here??
+	INTC_register_interrupt(&sensor_gyro_new_data, AVR32_GPIO_IRQ_0 + ACC_NEW_DATA_INT_PIN/8, AVR32_INTC_INT0);
+	// Enable all interrupts.
+	Enable_global_interrupt();
+}
+
+/*Read from gyro on interrupt that new data is ready*/
+__attribute__((__interrupt__))
+void sensor_gyro_new_data_int_handle(void){
+	uint8_t data[6]
+	sensor_acc_read(GYR_X_H,data)//read registers for x, y and z
+	//reading automatically resets interrupt
+	gyro_reading.x = ((data[0]>>6) | (data[1]<<2))/GYR_SENS;
+	gyro_reading.y = ((data[2]>>6) | (data[3]<<2))/GYR_SENS;
+	gyro_reading.z = ((data[4]>>6) | (data[5]<<2))/GYR_SENS;
+}
