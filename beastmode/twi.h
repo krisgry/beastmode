@@ -69,6 +69,12 @@
 #include "status_codes.h"
 #include "conf_twim.h"
 
+//from conf_twim.h
+#define AVR32_TWIM0_GROUP         11
+#define CONF_TWIM_IRQ_LINE          AVR32_TWIM0_IRQ
+#define CONF_TWIM_IRQ_GROUP         AVR32_TWIM0_GROUP
+#define CONF_TWIM_IRQ_LEVEL         1
+
 //! @{
 //! TWI Standard Mode
 #define TWI_STD_MODE_SPEED      (100000 /* kbit/s */)

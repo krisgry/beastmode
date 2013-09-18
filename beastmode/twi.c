@@ -46,7 +46,7 @@
  *
  */
 
-#include "twim.h"
+#include "twi.h"
 
 //! \internal Pointer to the instance 1 of the TWIM registers for IT.
 static volatile avr32_twim_t *twim_inst;
