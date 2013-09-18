@@ -9,6 +9,8 @@
 #ifndef SENSOR_H_
 #define SENSOR_H_
 
+#include <asf.h>
+
 
 #define ACCADDR 0x38
 #define ACCXLSB_REG 0x02 //bit 7 and 6
@@ -26,7 +28,7 @@
 #define ACC_CALIB_Z_REG 0x18
 #define ACC_CALIB_TEMP_REG 0x19
 
-#define ACC_NEW_DATA_INT_PIN AVR32_PIN_PC3
+#define ACC_NEW_DATA_INT_PIN AVR32_PIN_PX58
 #define ACC_NEW_DATA_INT_ENABLE_BIT 5 //in ACC_CTRL3_REG
 #define ACC_RESET_INT_BIT 6 //in CTRL0_REG
 
