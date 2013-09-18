@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Atmel Studio Solution File, Format Version 11.00
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "beastmode", "beastmode\beastmode.cproj", "{9AC4D2C1-98E2-47FA-A04F-38C18EDF2327}"
 EndProject
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "TC_EXAMPLE31", "..\example\TC_EXAMPLE31\TC_EXAMPLE31.cproj", "{EAD34EAB-0BC5-49D3-8D2C-9A4A607BFD46}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -15,10 +13,6 @@ Global
 		{9AC4D2C1-98E2-47FA-A04F-38C18EDF2327}.Debug|AVR.Build.0 = Debug|AVR
 		{9AC4D2C1-98E2-47FA-A04F-38C18EDF2327}.Release|AVR.ActiveCfg = Release|AVR
 		{9AC4D2C1-98E2-47FA-A04F-38C18EDF2327}.Release|AVR.Build.0 = Release|AVR
-		{EAD34EAB-0BC5-49D3-8D2C-9A4A607BFD46}.Debug|AVR.ActiveCfg = Debug|AVR
-		{EAD34EAB-0BC5-49D3-8D2C-9A4A607BFD46}.Debug|AVR.Build.0 = Debug|AVR
-		{EAD34EAB-0BC5-49D3-8D2C-9A4A607BFD46}.Release|AVR.ActiveCfg = Release|AVR
-		{EAD34EAB-0BC5-49D3-8D2C-9A4A607BFD46}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
